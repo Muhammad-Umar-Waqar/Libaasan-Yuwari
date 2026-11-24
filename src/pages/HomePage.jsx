@@ -7,7 +7,7 @@ import StyleHerStudio from "../components/StyleHerStudio";
 import BrandFeatures from "../components/BrandFeatures";
 import StorySection from "../components/StorySection";
 import JoinSection from "../components/JoinSection";
-import NotesSection from "../components/NotesSection";
+// import NotesSection from "../components/NotesSection";
 import Footer from "../components/Footer";
 
 export const HomePage = () => {
@@ -22,7 +22,7 @@ export const HomePage = () => {
         <BrandFeatures />
         <StorySection />
         <JoinSection />
-        <NotesSection />
+        {/* <NotesSection /> */}
       </main>
       <Footer />
     </>

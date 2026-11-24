@@ -32,22 +32,26 @@ export const OpeningScreen = () => {
         />
       </svg>
       <div className="op-name">
-        <span style={{ animationDelay: "1.50s" }}>L</span>
-        <span style={{ animationDelay: "1.56s" }}>I</span>
-        <span style={{ animationDelay: "1.62s" }}>B</span>
-        <span style={{ animationDelay: "1.68s" }}>A</span>
-        <span style={{ animationDelay: "1.74s" }}>A</span>
-        <span style={{ animationDelay: "1.80s" }}>S</span>
-        <span style={{ animationDelay: "1.86s" }}>A</span>
-        <span style={{ animationDelay: "1.92s" }}>N</span>
+        <span className="op-word">
+          <span style={{ animationDelay: "1.50s" }}>L</span>
+          <span style={{ animationDelay: "1.56s" }}>I</span>
+          <span style={{ animationDelay: "1.62s" }}>B</span>
+          <span style={{ animationDelay: "1.68s" }}>A</span>
+          <span style={{ animationDelay: "1.74s" }}>A</span>
+          <span style={{ animationDelay: "1.80s" }}>S</span>
+          <span style={{ animationDelay: "1.86s" }}>A</span>
+          <span style={{ animationDelay: "1.92s" }}>N</span>
+        </span>
         <span className="sp"></span>
-        <span style={{ animationDelay: "2.04s" }}>Y</span>
-        <span style={{ animationDelay: "2.10s" }}>U</span>
-        <span style={{ animationDelay: "2.16s" }}>W</span>
-        <span style={{ animationDelay: "2.22s" }}>A</span>
-        <span style={{ animationDelay: "2.28s" }}>A</span>
-        <span style={{ animationDelay: "2.34s" }}>R</span>
-        <span style={{ animationDelay: "2.40s" }}>I</span>
+        <span className="op-word">
+          <span style={{ animationDelay: "2.04s" }}>Y</span>
+          <span style={{ animationDelay: "2.10s" }}>U</span>
+          <span style={{ animationDelay: "2.16s" }}>W</span>
+          <span style={{ animationDelay: "2.22s" }}>A</span>
+          <span style={{ animationDelay: "2.28s" }}>A</span>
+          <span style={{ animationDelay: "2.34s" }}>R</span>
+          <span style={{ animationDelay: "2.40s" }}>I</span>
+        </span>
       </div>
       <div className="op-tag">Growing in Grace</div>
     </div>

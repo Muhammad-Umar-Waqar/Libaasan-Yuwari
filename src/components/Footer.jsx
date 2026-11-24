@@ -12,8 +12,9 @@ export const Footer = () => {
           <b>Libaasan Yuwaari</b> · Growing in Grace
         </span>
         <span>
-          Online only · Cash on Delivery across Pakistan · www.libaasanyuwaari.com ·
-          @libaasanyuwaari ·{" "}
+          Online only · Cash on Delivery across Pakistan ·{" "}
+          <a href="mailto:contact@libaasanyuwaari.com">contact@libaasanyuwaari.com</a> ·{" "}
+          www.libaasanyuwaari.com · @libaasanyuwaari ·{" "}
           <a
             href="#sizechart"
             onClick={(e) => {

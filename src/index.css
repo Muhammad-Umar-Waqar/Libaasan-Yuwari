@@ -142,6 +142,9 @@ header.top .wrap {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 0.02em;
+  line-height: 1.15;
+  display: block;
+  white-space: nowrap;
 }
 
 .brand small {
@@ -151,6 +154,8 @@ header.top .wrap {
   text-transform: uppercase;
   color: var(--gold-soft);
   line-height: 1;
+  margin-top: 2px;
+  white-space: nowrap;
 }
 
 nav.links {
@@ -196,11 +201,42 @@ nav.links a:hover {
 }
 
 @media (max-width: 760px) {
+  header.top .wrap {
+    gap: 12px;
+  }
   nav.links {
     display: none;
   }
+  .brand {
+    gap: 8px;
+  }
+  .brand .mark {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+  }
   .brand b {
-    font-size: 19px;
+    font-size: clamp(16px, 4.5vw, 19px);
+    white-space: nowrap;
+    line-height: 1.15;
+  }
+  .brand small {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    white-space: nowrap;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand b {
+    font-size: 15px;
+  }
+  .brand small {
+    font-size: 9px;
+  }
+  .brand .mark {
+    width: 36px;
+    height: 36px;
   }
 }
 
@@ -279,8 +315,12 @@ nav.links a:hover {
 }
 
 @media (max-width: 900px) {
+  .readout {
+    gap: 12px 18px;
+  }
   .line-pill {
     margin-left: 0;
+    align-self: flex-start;
   }
   .panel {
     display: contents;
@@ -350,18 +390,22 @@ nav.links a:hover {
   display: grid;
   gap: 2px;
   padding-bottom: 4px;
-  flex: 1 1 0;
-  min-width: 0;
+  flex: 1 1 auto;
+  min-width: 140px;
 }
 
 .age-meta .yrs {
   font-family: var(--f-display);
   font-size: 24px;
+  white-space: nowrap;
 }
 
 .age-meta .size {
   font-size: 14px;
   color: rgba(251, 248, 241, 0.8);
+  line-height: 1.4;
+  word-break: normal;
+  overflow-wrap: break-word;
 }
 
 .age-meta .size b {
@@ -380,6 +424,25 @@ nav.links a:hover {
   text-transform: uppercase;
   font-weight: 700;
   white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .readout {
+    gap: 10px 14px;
+  }
+  .age-num {
+    font-size: 60px;
+  }
+  .age-meta .yrs {
+    font-size: 22px;
+  }
+  .age-meta .size {
+    font-size: 13px;
+  }
+  .line-pill {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
 }
 
 .stage-copy {
@@ -639,8 +702,8 @@ input[type=range]::-moz-range-thumb {
   background: var(--cream);
   color: var(--ink);
   border-radius: 16px;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
   border: 2px solid transparent;
   transition: border-color 0.2s, transform 0.2s;
@@ -656,8 +719,11 @@ input[type=range]::-moz-range-thumb {
   border: 0;
   padding: 0;
   text-align: left;
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
   color: inherit;
+  cursor: pointer;
 }
 
 .card .pic {
@@ -689,8 +755,10 @@ input[type=range]::-moz-range-thumb {
 
 .card .txt {
   padding: 9px 11px 4px;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: 2px;
+  flex: 1 1 auto;
 }
 
 .card .tag {
@@ -705,7 +773,8 @@ input[type=range]::-moz-range-thumb {
   font-family: var(--f-display);
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.1;
+  line-height: 1.15;
+  min-height: 2.3em;
 }
 
 .card .pr {
@@ -719,11 +788,20 @@ input[type=range]::-moz-range-thumb {
   border-radius: 10px;
   background: var(--teal);
   color: var(--cream);
-  font-size: 13px;
+  font-size: 12.5px;
   font-weight: 700;
-  padding: 9px 6px;
-  line-height: 1.2;
-  min-height: 40px;
+  padding: 6px 8px;
+  line-height: 1.25;
+  height: 44px;
+  min-height: 44px;
+  max-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-shrink: 0;
+  cursor: pointer;
+  transition: background-color 0.15s, transform 0.1s;
 }
 
 .card .add:hover {
@@ -2177,9 +2255,10 @@ section.band .wrap {
 }
 
 .wa-wrap {
-  display: grid;
-  gap: 10px;
-  justify-items: start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
 }
 
 .wa-go {
@@ -2187,26 +2266,51 @@ section.band .wrap {
   color: #06371d;
   font-weight: 800;
   border-radius: 12px;
-  padding: 13px 20px;
+  padding: 12px 20px;
   text-decoration: none;
-  min-height: 44px;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+  box-shadow: 0 4px 14px rgba(37, 211, 102, 0.35);
+  transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+}
+
+.wa-go:hover {
+  background: #20BA5A;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37, 211, 102, 0.45);
+}
+
+.wa-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
 }
 
 .wa {
   display: flex;
   gap: 10px;
   align-items: center;
-  background: rgba(0, 0, 0, 0.18);
+  background: rgba(0, 0, 0, 0.22);
   border: 1px solid rgba(217, 188, 134, 0.4);
-  border-radius: 14px;
-  padding: 12px 16px;
+  border-radius: 12px;
+  padding: 10px 16px;
+  min-height: 48px;
+}
+
+.wa-label {
+  font-size: 13px;
+  color: rgba(251, 248, 241, 0.75);
 }
 
 .wa b {
-  font-size: 20px;
+  font-size: 18px;
   letter-spacing: 0.04em;
   font-variant-numeric: tabular-nums;
   user-select: all;
+  color: var(--cream);
 }
 
 .wa button {
@@ -2214,8 +2318,66 @@ section.band .wrap {
   background: var(--gold);
   color: var(--teal-deep);
   font-weight: 800;
-  border-radius: 10px;
-  padding: 8px 12px;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.wa button:hover {
+  background: var(--gold-soft);
+  transform: scale(1.05);
+}
+
+.wa-mail {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(217, 188, 134, 0.4);
+  border-radius: 12px;
+  padding: 10px 16px;
+  min-height: 48px;
+}
+
+.mail-icon {
+  color: var(--gold-soft);
+  flex-shrink: 0;
+}
+
+.wa-mail-link {
+  color: var(--cream);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  transition: color 0.15s;
+}
+
+.wa-mail-link:hover {
+  color: var(--gold-soft);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .wa-wrap {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+  }
+  .wa-go {
+    justify-content: center;
+    width: 100%;
+  }
+  .wa,
+  .wa-mail {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .wa-mail-link {
+    font-size: clamp(12px, 3.8vw, 15px);
+  }
 }
 
 .notes {
@@ -2345,14 +2507,21 @@ footer a {
 .op-name {
   font-family: var(--f-display);
   font-weight: 600;
-  font-size: clamp(24px, 6vw, 34px);
-  letter-spacing: 0.22em;
+  font-size: clamp(18px, 4.8vw, 32px);
+  letter-spacing: clamp(0.12em, 2vw, 0.22em);
   color: var(--teal);
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
+  align-items: center;
   overflow: hidden;
-  padding-left: 0.22em;
+  padding-left: clamp(0.12em, 2vw, 0.22em);
+  max-width: 100%;
+}
+
+.op-word {
+  display: inline-flex;
+  white-space: nowrap;
 }
 
 .op-name span {
@@ -2363,7 +2532,8 @@ footer a {
 }
 
 .op-name .sp {
-  width: 0.5em;
+  width: 0.45em;
+  display: inline-block;
 }
 
 .op-tag {
@@ -2373,6 +2543,21 @@ footer a {
   color: var(--gold-ink);
   opacity: 0;
   animation: op-fade 1s ease 2.4s forwards;
+}
+
+@media (max-width: 600px) {
+  #opening {
+    padding: 16px;
+    gap: 14px;
+  }
+  .op-name {
+    font-size: clamp(14px, 4.4vw, 19px);
+    letter-spacing: 0.12em;
+    padding-left: 0.12em;
+  }
+  .op-tag {
+    font-size: 15px;
+  }
 }
 
 @keyframes op-draw {
