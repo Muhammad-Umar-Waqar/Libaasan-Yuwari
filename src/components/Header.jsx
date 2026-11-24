@@ -51,11 +51,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className="proto">
-        <div className="wrap">
-          Design prototype · drawings, product names and prices are placeholders
-        </div>
-      </div>
+
 
       <div className="announce" role="region" aria-label="Announcements">
         <div className="wrap">
