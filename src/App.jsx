@@ -54,15 +54,16 @@ export const App = () => {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [dispatch]);
 
-  // Handle body overflow
+  // Handle body overflow for overlay modals and slide-out drawers
   useEffect(() => {
-    const isCheckout = location.pathname === "/checkout";
-    if (isCheckout || isSizeChartOpen || isBagOpen) {
+    if (isSizeChartOpen || isBagOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("modal-open");
     }
-  }, [location.pathname, isSizeChartOpen, isBagOpen]);
+  }, [isSizeChartOpen, isBagOpen]);
 
   const handleCloseScrim = () => {
     dispatch(setSizeChartOpen(false));

@@ -35,6 +35,54 @@ export const bagSlice = createSlice({
         }
       }
     },
+    setItemQty: (state, action) => {
+      const { key, qty } = action.payload;
+      const item = state.items.find((x) => x.key === key);
+      if (item) {
+        if (qty < 1) {
+          state.items = state.items.filter((x) => x.key !== key);
+        } else {
+          item.qty = qty;
+        }
+      }
+    },
+    updateItemVariant: (state, action) => {
+      const { key, newSize, newAge, newColor, newColorName, newHj, newPrice, newQty } = action.payload;
+      const item = state.items.find((x) => x.key === key);
+      if (item) {
+        if (newQty !== undefined && newQty >= 1) {
+          item.qty = newQty;
+        }
+        if (newAge !== undefined) {
+          item.age = newAge;
+        }
+        if (newColor !== undefined) {
+          item.p = { ...item.p, c: newColor };
+          if (newColorName) item.colorName = newColorName;
+        }
+        if (newHj !== undefined) {
+          item.p = { ...item.p, hj: newHj };
+        }
+        if (newPrice !== undefined) {
+          item.price = newPrice;
+        }
+        if (newSize !== undefined) {
+          item.size = newSize;
+          const parts = item.key.split("|");
+          const newKey = parts.length === 2 ? `${parts[0]}|${newSize}` : `${item.p?.id || 'it'}|${newSize}`;
+          if (newKey !== key) {
+            const existingDuplicate = state.items.find((x) => x.key === newKey);
+            if (existingDuplicate) {
+              existingDuplicate.qty += item.qty;
+              state.items = state.items.filter((x) => x.key !== key);
+              return;
+            } else {
+              item.key = newKey;
+            }
+          }
+        }
+      }
+    },
     removeItem: (state, action) => {
       const key = action.payload;
       state.items = state.items.filter((x) => x.key !== key);
@@ -68,6 +116,8 @@ export const bagSlice = createSlice({
 export const {
   addItem,
   updateQty,
+  setItemQty,
+  updateItemVariant,
   removeItem,
   clearBag,
   setBagDrawerOpen,

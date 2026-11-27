@@ -135,3 +135,26 @@ export const STUDIO_STYLES = {
   "Maxi": { type: "frock", len: { k: 0.95, o: 0.95 }, flare: 1.95, trim: true, price: { k: 3200, o: 4000 } },
   "Abaya": { type: "abaya", len: { k: 0.95, o: 0.95 }, flare: 1.4, buttons: true, price: { k: 3200, o: 2100 } }
 };
+
+export const CHECKOUT_SIZES = [
+  { size: "1", age: 3, label: "Size 1 (Age 3 · 98 cm)" },
+  { size: "2", age: 4, label: "Size 2 (Age 4 · 104 cm)" },
+  { size: "3", age: 5, label: "Size 3 (Age 5 · 110 cm)" },
+  { size: "4", age: 6, label: "Size 4 (Age 6 · 116 cm)" },
+  { size: "5", age: 7, label: "Size 5 (Age 7 · 122 cm)" },
+  { size: "6", age: 8, label: "Size 6 (Age 8 · 128 cm)" },
+  { size: "7", age: 10, label: "Size 7 (Age 9–10 · 140 cm)" },
+  { size: "8", age: 12, label: "Size 8 (Age 11–12 · 152 cm)" },
+  { size: "9", age: 14, label: "Size 9 (Age 13–15 · 160 cm)" }
+];
+
+export const CHECKOUT_COLORS = [
+  { name: "Blush", hex: "#E8BBAA" },
+  { name: "Mint", hex: "#A9CBB7" },
+  { name: "Lilac", hex: "#C7B6D9" },
+  { name: "Sky Blue", hex: "#9DB4C8" },
+  { name: "Rose", hex: "#C99A9E" },
+  { name: "Ivory", hex: "#F1E2C6" },
+  { name: "Sage", hex: "#8FA89A" },
+  { name: "Plum", hex: "#7E4A63" }
+];

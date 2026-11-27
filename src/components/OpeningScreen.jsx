@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectHasSeenOpening, setSeenOpening } from "../store/appSlice";
 
@@ -6,6 +6,13 @@ export const OpeningScreen = () => {
   const hasSeen = useSelector(selectHasSeenOpening);
   const dispatch = useDispatch();
   const [skipped, setSkipped] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(setSeenOpening());
+    }, 4200);
+    return () => clearTimeout(timer);
+  }, [dispatch]);
 
   if (hasSeen) return null;
 
